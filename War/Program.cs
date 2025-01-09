@@ -25,8 +25,7 @@ namespace War
 
             while (!game.isWinner())
             {
-                Console.WriteLine(game.currentPlayer() + " press enter to pop your card");
-                Console.ReadKey();
+                game.handleTurn();
             }
         }
     }

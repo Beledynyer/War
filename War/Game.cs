@@ -36,6 +36,13 @@ namespace War
         {
             return players[turnKeeper].getName();
         }
+        
+        public Card playerPlay()
+        {
+            Card card = players[turnKeeper].getOnHand().pop();
+            turnKeeper = (turnKeeper + 1) % 2;
+            return card;
+        }
 
         public bool isWinner()
         {
@@ -89,6 +96,16 @@ namespace War
                 }
             }
         }
+        public void handleTurn()
+        {
+            Console.WriteLine(currentPlayer() + " press enter to pop your card");
+            Console.ReadKey();
+            Card card1 = playerPlay();
+            Console.WriteLine(currentPlayer() + " press enter to pop your card");
+            Console.ReadKey();
+            Card card2 = playerPlay();
 
+
+        }
     }
 }
