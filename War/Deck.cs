@@ -27,7 +27,12 @@ namespace War
 
         public Card pop()
         {
-            return cards.FirstOrDefault();
+            Card card = cards.FirstOrDefault();
+            if(cards.Count> 0)
+            {
+                cards.RemoveAt(0);
+            }
+            return card;
         }
 
         public bool isEmpty()
@@ -40,5 +45,10 @@ namespace War
             return cards.Count;
         }
         public List<Card> getCards() {return cards;}
+
+        public void clear()
+        {
+            cards.Clear();
+        }
     }
 }
