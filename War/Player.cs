@@ -22,5 +22,35 @@ namespace War
         public Deck getOnHand() { return onHand; }
         public Deck getOffHand() { return offHand; }
         public String getName() { return name; }
+
+        public Card placeCard()
+        {
+            if (onHand.isEmpty())
+            {
+                onHand.addCards(offHand.getCards());
+                onHand.shuffle();
+                offHand.clear();
+            }
+            return onHand.pop();
+        }
+
+        public List<Card> placeThreeCards()
+        {
+            List<Card> cards = new List<Card>();
+
+
+            while(cards.Count() < 3 && (!onHand.isEmpty() || !offHand.isEmpty())){
+
+                if (onHand.isEmpty())
+                {
+                    onHand.addCards(offHand.getCards());
+                    onHand.shuffle();
+                    offHand.clear();
+                }
+
+                cards.Add(onHand.pop());
+            }
+            return cards;
+        }
     }
 }

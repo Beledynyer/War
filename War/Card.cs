@@ -18,5 +18,7 @@ namespace War
 
         public String getDescription() { return description; }
         public int getValue() { return value; }
+
+        public override String ToString() { return description; }
     }
 }
