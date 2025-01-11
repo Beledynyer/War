@@ -22,7 +22,7 @@ namespace War
 
         public void addCards(List<Card> cards)
         {
-            cards.AddRange(cards);
+            this.cards.AddRange(cards);
         }
 
         public Card pop()

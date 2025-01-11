@@ -22,6 +22,7 @@ namespace War
             players[1] = player1;
             makeDeck();
             turnKeeper = 0;
+            pack = new List<Card>();
         }
 
         public void setUpGame()
@@ -74,7 +75,6 @@ namespace War
                     if(j == 12 && i < suits.Length - 1)
                     {
                         cards.Add(new Card(values[j],  "Ace of " + suits[i + 1]));
-                        continue;
                     }
                     else if(j!= 12)
                     {
@@ -101,6 +101,7 @@ namespace War
                 }
             }
             initialDeck.addCards(cards);
+            Console.WriteLine("XD");
         }
         public void handleTurn()
         {
@@ -120,6 +121,19 @@ namespace War
                 pack.Add(card2);
                 
                 CardComparer cardComparer = new CardComparer();
+
+                if(card1 == null)
+                {
+                    players[1].getOffHand().addCards(pack);
+                    pack.Clear();
+                    break;
+                }
+                else if(card2 == null)
+                {
+                    players[0].getOnHand().addCards(pack);
+                    pack.Clear();
+                    break;
+                }
 
                 switch (cardComparer.Compare(card1, card2))
                 {
@@ -146,7 +160,8 @@ namespace War
             }
 
             Console.WriteLine("Winner: " + getWinner());
-            
+            Console.ReadKey
+                ();
         }
     }
 }
